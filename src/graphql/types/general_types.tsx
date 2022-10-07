@@ -11685,10 +11685,7 @@ export type MarketDataQueryVariables = Exact<{
 }>;
 
 
-export type MarketDataQuery = { communityPool: Array<(
-    { __typename?: 'community_pool' }
-    & Pick<Community_Pool, 'coins'>
-  )>, inflation: Array<(
+export type MarketDataQuery = { inflation: Array<(
     { __typename?: 'inflation' }
     & Pick<Inflation, 'value'>
   )>, tokenPrice: Array<(
@@ -12791,9 +12788,6 @@ export type ChainIdLazyQueryHookResult = ReturnType<typeof useChainIdLazyQuery>;
 export type ChainIdQueryResult = Apollo.QueryResult<ChainIdQuery, ChainIdQueryVariables>;
 export const MarketDataDocument = gql`
     query MarketData($denom: String) {
-  communityPool: community_pool(order_by: {height: desc}, limit: 1) {
-    coins
-  }
   inflation: inflation(order_by: {height: desc}, limit: 1) {
     value
   }
