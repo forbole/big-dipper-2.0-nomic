@@ -10,7 +10,6 @@ query TransactionDetails($hash: String) {
     gasWanted: gas_wanted
     success: success
     memo: memo
-    messages: messages
     logs
     rawLog: raw_log
   }
