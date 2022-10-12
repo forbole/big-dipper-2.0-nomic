@@ -5,14 +5,14 @@ subscription LastHundredBlocks($address: String) {
     transactions {
     	hash
   	}
-    precommits: pre_commits(where: {validator: {validator_info: {operator_address: {_eq: $address}}}}) {
+    precommits: pre_commits(where: {validator_address: {_eq: $address}}) {
       validatorAddress: validator_address
     }
   }
 }
 
 subscription ValidatorLastSeenListener($address: String) {
-  preCommit: pre_commit(limit: 1, where: {validator: {validator_info: {operator_address: {_eq: $address}}}}, order_by: {height: desc}) {
+  preCommit: pre_commit(limit: 1, where: {validator_address: {_eq: $address}}, order_by: {height: desc}) {
     height
     timestamp
   }
