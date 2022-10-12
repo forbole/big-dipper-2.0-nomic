@@ -4,8 +4,7 @@ import { useState } from 'react';
 import { HeroState } from './types';
 
 export const useHero = () => {
-  // const [state, setState] = useState<HeroState>({
-  const state = useState<HeroState>({
+  const [state, setState] = useState<HeroState>({
     loading: true,
     exists: true,
     tokenPriceHistory: [],
