@@ -3,7 +3,7 @@ query Validators {
     bondedTokens: bonded_tokens
   }
   validator {
-    validatorStatuses: validator_statuses(order_by: {height: desc}, limit: 1) {
+    validatorStatuses: validator_status  {
       status: in_active_set
       jailed
       height
