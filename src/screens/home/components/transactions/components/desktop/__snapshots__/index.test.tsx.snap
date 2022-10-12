@@ -118,12 +118,7 @@ exports[`screen: Home/Transactions/Desktop matches snapshot 1`] = `
               "width": "25%",
             }
           }
-        >
-          <div
-            id="Result"
-            success={true}
-          />
-        </td>
+        />
         <td
           aria-sort={null}
           className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
