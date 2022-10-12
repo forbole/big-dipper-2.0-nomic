@@ -10,6 +10,8 @@ export const useHero = () => {
     tokenPriceHistory: [],
   });
 
+  console.log(setState);
+
   return {
     state,
   };
