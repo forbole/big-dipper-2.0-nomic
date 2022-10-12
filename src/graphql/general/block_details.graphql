@@ -8,11 +8,7 @@ query BlockDetails($height: bigint, $signatureHeight: bigint) {
     hash
     timestamp
     txs: num_txs
-    validator {
-      validatorInfo: validator_info {
-        operatorAddress: proposer_address
-      }
-    }
+    operatorAddress: proposer_address
   }
   preCommitsAggregate: pre_commit_aggregate(where: {height: {_eq: $signatureHeight}}) {
       aggregate{
