@@ -18,7 +18,11 @@ exports[`screen: Validators/List matches snapshot 1`] = `
     />
     <div
       className="makeStyles-list"
-    />
+    >
+      <div
+        id="NoData"
+      />
+    </div>
   </div>
 </div>
 `;
