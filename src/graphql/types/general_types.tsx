@@ -5748,6 +5748,7 @@ export type ValidatorsAddressListQueryVariables = Exact<{ [key: string]: never; 
 
 export type ValidatorsAddressListQuery = { validator: Array<(
     { __typename?: 'validator' }
+    & { consensusAddress: Validator['consensus_address'], selfDelegateAddress: Validator['self_delegate_address'] }
     & { validatorDescriptions: Array<(
       { __typename?: 'validator_description' }
       & Pick<Validator_Description, 'moniker' | 'identity'>
@@ -5759,6 +5760,7 @@ export type ValidatorAddressesQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type ValidatorAddressesQuery = { validator: Array<(
     { __typename?: 'validator' }
+    & { consensusAddress: Validator['consensus_address'], selfDelegateAddress: Validator['self_delegate_address'] }
     & { validatorDescriptions: Array<(
       { __typename?: 'validator_description' }
       & Pick<Validator_Description, 'moniker'>
@@ -6585,6 +6587,8 @@ export type ValidatorsQueryResult = Apollo.QueryResult<ValidatorsQuery, Validato
 export const ValidatorsAddressListDocument = gql`
     query ValidatorsAddressList {
   validator {
+    consensusAddress: consensus_address
+    selfDelegateAddress: self_delegate_address
     validatorDescriptions: validator_descriptions(
       limit: 1
       order_by: {height: desc}
@@ -6627,6 +6631,8 @@ export const ValidatorAddressesDocument = gql`
   validator(
     where: {consensus_address: {_is_null: false}, self_delegate_address: {_is_null: false}}
   ) {
+    consensusAddress: consensus_address
+    selfDelegateAddress: self_delegate_address
     validatorDescriptions: validator_descriptions(
       limit: 1
       order_by: {height: desc}
