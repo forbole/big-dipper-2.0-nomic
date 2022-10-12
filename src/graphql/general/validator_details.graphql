@@ -23,7 +23,7 @@ query ValidatorDetails($address: String) {
     height
     bonded: bonded_tokens
   }
-  validator(where: {validator_info: {operator_address: {_eq: $address}}}) {
+  validator(where: {self_delegate_address: {_eq: $address}}) {
     validatorDescriptions: validator_descriptions(order_by: {height: desc}, limit: 1) {
       details
     }
