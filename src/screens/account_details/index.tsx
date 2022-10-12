@@ -10,7 +10,6 @@ import { useStyles } from './styles';
 import {
   Overview,
   Balance,
-  Staking,
   Transactions,
   OtherTokens,
 } from './components';
@@ -64,10 +63,6 @@ const AccountDetails = () => {
             <OtherTokens
               className={classes.otherTokens}
               otherTokens={state.otherTokens}
-            />
-            <Staking
-              className={classes.staking}
-              rewards={state.rewards}
             />
             <Transactions
               className={classes.transactions}
