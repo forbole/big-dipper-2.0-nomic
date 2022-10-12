@@ -5730,6 +5730,7 @@ export type ValidatorsQuery = { stakingPool: Array<(
     & { bondedTokens: Staking_Pool['bonded_tokens'] }
   )>, validator: Array<(
     { __typename?: 'validator' }
+    & { consensusAddress: Validator['consensus_address'], selfDelegateAddress: Validator['self_delegate_address'] }
     & { validatorStatuses?: Maybe<(
       { __typename?: 'validator_status' }
       & Pick<Validator_Status, 'jailed' | 'height'>
@@ -6539,6 +6540,8 @@ export const ValidatorsDocument = gql`
     bondedTokens: bonded_tokens
   }
   validator {
+    consensusAddress: consensus_address
+    selfDelegateAddress: self_delegate_address
     validatorStatuses: validator_status {
       status: in_active_set
       jailed

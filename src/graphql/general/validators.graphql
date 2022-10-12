@@ -3,6 +3,8 @@ query Validators {
     bondedTokens: bonded_tokens
   }
   validator {
+    consensusAddress: consensus_address
+    selfDelegateAddress: self_delegate_address
     validatorStatuses: validator_status  {
       status: in_active_set
       jailed

@@ -16,31 +16,20 @@ exports[`screen: Blocks/List matches snapshot 1`] = `
       <div
         data={
           Object {
-            "error": undefined,
             "fee": Object {
               "baseDenom": "udaric",
               "displayDenom": "daric",
               "exponent": 6,
               "value": "0.000050",
             },
-            "gasUsed": 149488,
-            "gasWanted": undefined,
+            "gas": 149488,
             "hash": "7D373DE5C5FB03EA72006F6CEC8F908545D435AE1C598A1B53AD0770C243822A",
             "height": 54290,
             "memo": "",
-            "success": undefined,
             "timestamp": "2021-05-01T07:47:40.855759",
           }
         }
         id="Overview"
-      />
-      <div
-        className="makeStyles-messages"
-        id="Messages"
-        messages={Array []}
-        onMessageFilterCallback={[Function]}
-        toggleMessageDisplay={[Function]}
-        viewRaw={false}
       />
     </span>
   </div>

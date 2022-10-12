@@ -13,12 +13,7 @@ import { isValidAddress } from '@utils/prefix_convert';
 import { useDesmosProfile } from '@hooks';
 import { AccountDetailState } from './types';
 import {
-  fetchAccountWithdrawalAddress,
   fetchAvailableBalances,
-  fetchCommission,
-  fetchDelegationBalance,
-  fetchRewards,
-  fetchUnbondingBalance,
 } from './utils';
 
 const defaultTokenUnit: TokenUnit = {
@@ -85,31 +80,17 @@ export const useAccountDetails = () => {
   [router.query.address]);
 
   useEffect(() => {
-    fetchWithdrawalAddress();
     fetchBalance();
   }, [router.query.address]);
 
   // ==========================
   // Fetch Data
   // ==========================
-  const fetchWithdrawalAddress = async () => {
-    const data = await fetchAccountWithdrawalAddress(router.query.address as string);
-    handleSetState({
-      overview: {
-        address: router.query.address,
-        withdrawalAddress: R.pathOr('', ['withdrawalAddress', 'address'], data),
-      },
-    });
-  };
 
   const fetchBalance = async () => {
     const address = router.query.address as string;
     const promises = [
-      fetchCommission(address),
       fetchAvailableBalances(address),
-      fetchDelegationBalance(address),
-      fetchUnbondingBalance(address),
-      fetchRewards(address),
     ];
     const [
       commission,

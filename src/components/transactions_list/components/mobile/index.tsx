@@ -18,7 +18,6 @@ import { mergeRefs } from '@utils/merge_refs';
 import {
   SingleTransactionMobile,
   Loading,
-  Result,
 } from '@components';
 import {
   useList,
@@ -60,11 +59,7 @@ const Mobile: React.FC<TransactionsListState> = ({
         </Typography>
       </Link>
     ),
-    result: (
-      <Result success={x.success} />
-    ),
     time: dayjs.utc(x.timestamp).fromNow(),
-    messages: numeral(x.messages.count).format('0,0'),
   }));
 
   return (
