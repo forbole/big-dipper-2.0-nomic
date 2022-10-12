@@ -56,24 +56,25 @@ export const useValidators = () => {
 
     const { signedBlockWindow } = slashingParams;
 
-    let formattedItems: ValidatorType[] = data.validator.filter((x) => x.validatorInfo).map((x) => {
-      const votingPower = R.pathOr(0, ['validatorVotingPowers', 0, 'votingPower'], x);
-      const votingPowerPercent = numeral((votingPower / votingPowerOverall) * 100).value();
+    let formattedItems: ValidatorType[] = data.validator.filter((x) => x.validatorStatuses)
+      .map((x) => {
+        const votingPower = R.pathOr(0, ['validatorVotingPowers', 0, 'votingPower'], x);
+        const votingPowerPercent = numeral((votingPower / votingPowerOverall) * 100).value();
 
-      const missedBlockCounter = R.pathOr(0, ['validatorSigningInfos', 0, 'missedBlocksCounter'], x);
-      const condition = getValidatorCondition(signedBlockWindow, missedBlockCounter);
+        const missedBlockCounter = R.pathOr(0, ['validatorSigningInfos', 0, 'missedBlocksCounter'], x);
+        const condition = getValidatorCondition(signedBlockWindow, missedBlockCounter);
 
-      return ({
-        validator: x.validatorInfo.operatorAddress,
-        votingPower,
-        votingPowerPercent,
-        commission: R.pathOr(0, ['validatorCommissions', 0, 'commission'], x) * 100,
-        condition,
-        status: R.pathOr(0, ['validatorStatuses', 0, 'status'], x),
-        jailed: R.pathOr(false, ['validatorStatuses', 0, 'jailed'], x),
-        tombstoned: R.pathOr(false, ['validatorSigningInfos', 0, 'tombstoned'], x),
+        return ({
+          validator: x.selfDelegateAddress,
+          votingPower,
+          votingPowerPercent,
+          commission: R.pathOr(0, ['validatorCommissions', 0, 'commission'], x) * 100,
+          condition,
+          status: R.pathOr(0, ['validatorStatuses', 0, 'status'], x),
+          jailed: R.pathOr(false, ['validatorStatuses', 0, 'jailed'], x),
+          tombstoned: R.pathOr(false, ['validatorSigningInfos', 0, 'tombstoned'], x),
+        });
       });
-    });
 
     // get the top 34% validators
     formattedItems = formattedItems.sort((a, b) => {
