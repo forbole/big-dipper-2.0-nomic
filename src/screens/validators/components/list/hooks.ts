@@ -58,7 +58,6 @@ export const useValidators = () => {
 
     let formattedItems: ValidatorType[] = data.validator.filter((x) => x.validatorStatuses)
       .map((x) => {
-        console.log('x', x);
         const votingPower = R.pathOr(0, ['validatorVotingPowers', 0, 'votingPower'], x);
         const votingPowerPercent = numeral((votingPower / votingPowerOverall) * 100).value();
 
