@@ -58,6 +58,7 @@ export const useValidators = () => {
 
     let formattedItems: ValidatorType[] = data.validator.filter((x) => x.validatorStatuses)
       .map((x) => {
+        console.log('x', x);
         const votingPower = R.pathOr(0, ['validatorVotingPowers', 0, 'votingPower'], x);
         const votingPowerPercent = numeral((votingPower / votingPowerOverall) * 100).value();
 
@@ -85,7 +86,7 @@ export const useValidators = () => {
     let cumulativeVotingPower = Big(0);
     let reached = false;
     formattedItems.forEach((x) => {
-      if (x.status === 3) {
+      if (x.status === true) {
         const totalVp = cumulativeVotingPower.add(x.votingPowerPercent);
         if (totalVp.lte(34) && !reached) {
           x.topVotingPower = true;
@@ -132,11 +133,11 @@ export const useValidators = () => {
     let sorted: ItemType[] = R.clone(items);
 
     if (state.tab === 0) {
-      sorted = sorted.filter((x) => x.status === 3);
+      sorted = sorted.filter((x) => x.status === true);
     }
 
     if (state.tab === 1) {
-      sorted = sorted.filter((x) => x.status !== 3);
+      sorted = sorted.filter((x) => x.status !== true);
     }
 
     if (search) {

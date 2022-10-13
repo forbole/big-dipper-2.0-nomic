@@ -8,6 +8,7 @@ query Validators {
     validatorStatuses: validator_status  {
       status: in_active_set
       jailed
+      tombstoned
       height
     }
     validatorVotingPowers: validator_voting_powers(offset: 0, limit: 1, order_by: {height: desc}) {
