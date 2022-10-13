@@ -14,7 +14,7 @@ jobs:
       - name: Prepare tags
         id: prep
         run: |
-          DOCKER_IMAGE=forbole/big-dipper-2.0-cosmos
+          DOCKER_IMAGE=forbole/big-dipper-2.0-nomic
           VERSION=edge
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             VERSION=${GITHUB_REF#refs/tags/}
@@ -77,8 +77,8 @@ jobs:
         run: |
             BRANCH=${GITHUB_REF}
             WEBHOOK_URL=''
-            if [[ $GITHUB_REF == refs/tags/desmos-morpheus-apollo-1* ]]; then
-              echo 'Deploying to Nomic morpheus-apollo-1'
+            if [[ $GITHUB_REF == refs/tags/nomic-stakenet-3-v ]]; then
+              echo 'Deploying to Nomic stakenet-3'
               WEBHOOK_URL=$NOMIC_AKASH_WEBHOOK_URL
             fi
               curl -i -X POST -H "Content-Type: application/json" -d '{"parameters":{"tag": "${{ steps.prep.outputs.version }}"}}' -k $WEBHOOK_URL -u "deploy:$AKASH_WEBHOOK_SECRET"
