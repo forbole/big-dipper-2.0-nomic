@@ -46,8 +46,9 @@ const Desktop: React.FC<{
     const condition = x.status === true ? getValidatorConditionClass(x.condition) : undefined;
     const percentDisplay = x.status === true ? `${numeral(x.votingPowerPercent).format('0.[00]')}%` : '0%';
     const votingPower = numeral(x.votingPower).format('0,0');
-    console.log('status', x.status, 'jailed', x.jailed, 'tomb', x.tombstoned);
-    console.log('status', status);
+
+    console.log('status in desktop', status);
+
     return ({
       idx: `#${i + 1}`,
       validator: (
