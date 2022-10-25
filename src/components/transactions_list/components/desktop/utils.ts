@@ -9,11 +9,11 @@ export const columns:{
   },
   {
     key: 'hash',
-    width: 40,
+    width: 60,
   },
   {
     key: 'time',
     align: 'right',
-    width: 40,
+    width: 20,
   },
 ];
