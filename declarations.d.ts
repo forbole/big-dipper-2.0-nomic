@@ -53,7 +53,7 @@ type ProfileConnectionType = {
 }
 
 type ValidatorProfile = {
-  status: number;
+  inActiveSet: boolean;
   jailed: boolean;
   condition: number;
   commission: number;

@@ -30,9 +30,9 @@ const Mobile: React.FC<{
   } = useList();
 
   const formattedItems = items.map((x, i) => {
-    const status = getValidatorStatus(x.status, x.jailed, x.tombstoned);
-    const condition = x.status === 3 ? getValidatorConditionClass(x.condition) : undefined;
-    const percentDisplay = x.status === 3 ? `${numeral(x.votingPowerPercent).format('0.[00]')}%` : '0%';
+    const status = getValidatorStatus(x.inActiveSet, x.jailed, x.tombstoned);
+    const condition = x.inActiveSet ? getValidatorConditionClass(x.condition) : undefined;
+    const percentDisplay = x.inActiveSet ? `${numeral(x.votingPowerPercent).format('0.[00]')}%` : '0%';
     const votingPower = numeral(x.votingPower).format('0,0');
     return ({
       idx: `#${i + 1}`,

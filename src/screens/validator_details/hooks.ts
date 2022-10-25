@@ -37,7 +37,7 @@ const initialState: ValidatorDetailsState = {
     website: '',
   },
   status: {
-    status: 0,
+    inActiveSet: false,
     jailed: false,
     tombstoned: false,
     condition: 0,
@@ -137,7 +137,7 @@ export const useValidatorDetails = () => {
       const condition = getValidatorCondition(signedBlockWindow, missedBlockCounter);
 
       const profile = {
-        status: R.pathOr(3, ['validatorStatuses', 0, 'status'], data.validator[0]),
+        inActiveSet: R.pathOr(false, ['validatorStatuses', 0, 'inActiveSet'], data.validator[0]),
         jailed: R.pathOr(false, ['validatorStatuses', 0, 'jailed'], data.validator[0]),
         tombstoned: R.pathOr(false, ['validatorSigningInfos', 0, 'tombstoned'], data.validator[0]),
         commission: R.pathOr(0, ['validatorCommissions', 0, 'commission'], data.validator[0]),

@@ -40,7 +40,7 @@ const mockValidatorsDocument = jest.fn().mockResolvedValue({
       {
         validatorStatuses: [
           {
-            status: 3,
+            inActiveSet: true,
             jailed: false,
             height: 437042,
           },

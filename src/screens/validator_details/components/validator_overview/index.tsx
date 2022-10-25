@@ -36,8 +36,8 @@ const ValidatorOverview: React.FC<{
     const { t } = useTranslation('validators');
     const { handleCopyToClipboard } = useAddress(t);
 
-    const statusTheme = getValidatorStatus(status.status, status.jailed, status.tombstoned);
-    const condition = getCondition(status.condition, status.status);
+    const statusTheme = getValidatorStatus(status.inActiveSet, status.jailed, status.tombstoned);
+    const condition = getCondition(status.condition, status.inActiveSet);
 
     const statusItems = [
       {
@@ -79,7 +79,7 @@ const ValidatorOverview: React.FC<{
           </Typography>
         ),
         value: (
-          status.status === 3 ? (
+          status.inActiveSet ? (
             <div className="condition__body">
               <InfoPopover
                 content={(

@@ -36,7 +36,7 @@ describe('screen: Validators/Tabs', () => {
               commission: 0,
               condition: 0,
               jailed: true,
-              status: 3,
+              inActiveSet: false,
               tombstoned: false,
             },
           ]}

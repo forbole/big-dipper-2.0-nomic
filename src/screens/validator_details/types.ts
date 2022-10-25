@@ -7,7 +7,7 @@ export type OverviewType = {
 }
 
 export type StatusType = {
-  status: number;
+  inActiveSet: boolean;
   jailed: boolean;
   tombstoned: boolean;
   condition: number;

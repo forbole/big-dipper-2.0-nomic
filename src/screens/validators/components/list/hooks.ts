@@ -48,7 +48,6 @@ export const useValidators = () => {
   // Parse data
   // ==========================
   const formatValidators = (data: ValidatorsQuery) => {
-    console.log('data', data);
     const slashingParams = SlashingParams.fromJson(R.pathOr({}, ['slashingParams', 0, 'params'], data));
     const votingPowerOverall = numeral(formatToken(
       R.pathOr(0, ['stakingPool', 0, 'bondedTokens'], data),
@@ -58,7 +57,7 @@ export const useValidators = () => {
     const { signedBlockWindow } = slashingParams;
 
     let formattedItems: ValidatorType[] = data.validator.map((x) => {
-      const statusString = R.pathOr('false', ['validatorStatuses', 'status'], x);
+      const inActiveSetString = R.pathOr('false', ['validatorStatuses', 'inActiveSet'], x);
       const jailedString = R.pathOr('false', ['validatorStatuses', 'jailed'], x);
       const tombstonedString = R.pathOr('false', ['validatorStatuses', 'tombstoned'], x);
 
@@ -73,7 +72,7 @@ export const useValidators = () => {
         votingPowerPercent,
         commission: R.pathOr(0, ['validatorCommissions', 0, 'commission'], x) * 100,
         condition,
-        status: statusString === 'true',
+        inActiveSet: inActiveSetString === true,
         jailed: jailedString === 'true',
         tombstoned: tombstonedString === 'true',
       });
@@ -88,9 +87,7 @@ export const useValidators = () => {
     let cumulativeVotingPower = Big(0);
     let reached = false;
     formattedItems.forEach((x) => {
-      if (x.status === true) {
-        console.log('cumulativeVotingPower', cumulativeVotingPower);
-
+      if (x.inActiveSet) {
         const totalVp = cumulativeVotingPower.add(x.votingPowerPercent);
         if (totalVp.lte(34) && !reached) {
           x.topVotingPower = true;
@@ -137,11 +134,11 @@ export const useValidators = () => {
     let sorted: ItemType[] = R.clone(items);
 
     if (state.tab === 0) {
-      sorted = sorted.filter((x) => x.status === true);
+      sorted = sorted.filter((x) => x.inActiveSet === true);
     }
 
     if (state.tab === 1) {
-      sorted = sorted.filter((x) => x.status !== true);
+      sorted = sorted.filter((x) => x.inActiveSet !== true);
     }
 
     if (search) {

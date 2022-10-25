@@ -52,7 +52,7 @@ export const fetchColumns = (t): {
       ),
     },
     {
-      key: 'status',
+      key: 'inActiveSet',
       width: 10,
     },
   ]);

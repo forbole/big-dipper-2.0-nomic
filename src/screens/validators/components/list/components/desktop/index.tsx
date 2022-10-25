@@ -42,12 +42,10 @@ const Desktop: React.FC<{
   } = useGrid(columns);
 
   const formattedItems = props.items.map((x, i) => {
-    const status = getValidatorStatus(x.status, x.jailed, x.tombstoned);
-    const condition = x.status === true ? getValidatorConditionClass(x.condition) : undefined;
-    const percentDisplay = x.status === true ? `${numeral(x.votingPowerPercent).format('0.[00]')}%` : '0%';
+    const status = getValidatorStatus(x.inActiveSet, x.jailed, x.tombstoned);
+    const condition = x.inActiveSet ? getValidatorConditionClass(x.condition) : undefined;
+    const percentDisplay = x.inActiveSet ? `${numeral(x.votingPowerPercent).format('0.[00]')}%` : '0%';
     const votingPower = numeral(x.votingPower).format('0,0');
-
-    console.log('status in desktop', status);
 
     return ({
       idx: `#${i + 1}`,
