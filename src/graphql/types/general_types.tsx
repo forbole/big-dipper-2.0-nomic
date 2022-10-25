@@ -5733,7 +5733,7 @@ export type ValidatorsQuery = { stakingPool: Array<(
     & { consensusAddress: Validator['consensus_address'], selfDelegateAddress: Validator['self_delegate_address'] }
     & { validatorStatuses?: Maybe<(
       { __typename?: 'validator_status' }
-      & Pick<Validator_Status, 'jailed' | 'height'>
+      & Pick<Validator_Status, 'jailed' | 'tombstoned' | 'height'>
       & { status: Validator_Status['in_active_set'] }
     )>, validatorVotingPowers: Array<(
       { __typename?: 'validator_voting_power' }
@@ -6545,6 +6545,7 @@ export const ValidatorsDocument = gql`
     validatorStatuses: validator_status {
       status: in_active_set
       jailed
+      tombstoned
       height
     }
     validatorVotingPowers: validator_voting_powers(
