@@ -3,7 +3,6 @@ export type ValidatorType = {
   votingPower: number;
   votingPowerPercent: number;
   commission: number;
-  condition: number;
   inActiveSet: boolean;
   jailed: boolean;
   tombstoned: boolean;

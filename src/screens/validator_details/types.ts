@@ -10,7 +10,6 @@ export type StatusType = {
   inActiveSet: boolean;
   jailed: boolean;
   tombstoned: boolean;
-  condition: number;
   commission: number;
   signedBlockWindow: number;
   missedBlockCounter: number;

@@ -13,7 +13,7 @@ const SingleValidator: React.FC<{
   commission: string;
   votingPower: React.ReactNode;
   status: {
-    inActiveSet: boolean;
+    status: string;
     theme: string;
   };
 }> = ({
@@ -45,7 +45,7 @@ const SingleValidator: React.FC<{
             {t('inActiveSet')}
           </Typography>
           <Typography variant="body1" className={classnames('value', 'status', status.theme)}>
-            {status.inActiveSet}
+            {status.status}
           </Typography>
         </div>
         <div className={classes.item}>
