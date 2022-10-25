@@ -17,7 +17,6 @@ import AutoSizer from 'react-virtualized-auto-sizer';
 import { mergeRefs } from '@utils/merge_refs';
 import {
   Loading,
-  Result,
 } from '@components';
 import {
   useList,
@@ -25,7 +24,6 @@ import {
   useScreenSize,
 } from '@hooks';
 import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
-import { getMessageByType } from '@msg';
 import { useRecoilValue } from 'recoil';
 import { readDate } from '@recoil/settings';
 import { useStyles } from './styles';
@@ -73,14 +71,7 @@ const TransactionList: React.FC<TransactionsListDetailsState> = ({
         </Typography>
       </Link>
     ),
-    result: (
-      <Result success={x.success} />
-    ),
     time: formatDayJs(dayjs.utc(x.timestamp), dateFormat),
-    messageCount: numeral(x.messages.count).format('0,0'),
-    messages: x.messages.items.map((message) => {
-      return getMessageByType(message, false, t);
-    }),
   }));
 
   return (
