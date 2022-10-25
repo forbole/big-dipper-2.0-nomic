@@ -5711,7 +5711,7 @@ export type ValidatorDetailsQuery = { stakingPool: Array<(
     )>, validatorStatuses?: Maybe<(
       { __typename?: 'validator_status' }
       & Pick<Validator_Status, 'jailed' | 'height'>
-      & { status: Validator_Status['in_active_set'] }
+      & { inActiveSet: Validator_Status['in_active_set'] }
     )>, validatorCommissions: Array<(
       { __typename?: 'validator_commission' }
       & Pick<Validator_Commission, 'commission'>
@@ -5734,7 +5734,7 @@ export type ValidatorsQuery = { stakingPool: Array<(
     & { validatorStatuses?: Maybe<(
       { __typename?: 'validator_status' }
       & Pick<Validator_Status, 'jailed' | 'tombstoned' | 'height'>
-      & { status: Validator_Status['in_active_set'] }
+      & { inActiveSet: Validator_Status['in_active_set'] }
     )>, validatorVotingPowers: Array<(
       { __typename?: 'validator_voting_power' }
       & { votingPower: Validator_Voting_Power['voting_power'] }
@@ -6488,7 +6488,7 @@ export const ValidatorDetailsDocument = gql`
       details
     }
     validatorStatuses: validator_status {
-      status: in_active_set
+      in_active_set
       jailed
       height
     }
@@ -6543,7 +6543,7 @@ export const ValidatorsDocument = gql`
     consensusAddress: consensus_address
     selfDelegateAddress: self_delegate_address
     validatorStatuses: validator_status {
-      status: in_active_set
+      in_active_set
       jailed
       tombstoned
       height
