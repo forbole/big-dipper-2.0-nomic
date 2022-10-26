@@ -27,7 +27,7 @@ export const getValidatorStatus = (inActiveSet, jailed, tombstoned: string) => {
     results.status = 'Active';
     results.theme = 'one';
   } else {
-    results.status = 'Unknown';
+    results.status = 'Inactive';
     results.theme = 'zero';
   }
 
