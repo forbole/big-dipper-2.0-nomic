@@ -33,9 +33,9 @@ const initialState: ValidatorDetailsState = {
     website: '',
   },
   status: {
-    inActiveSet: false,
-    jailed: false,
-    tombstoned: false,
+    inActiveSet: 'false',
+    jailed: 'false',
+    tombstoned: 'false',
     commission: 0,
     missedBlockCounter: 0,
     signedBlockWindow: 0,
@@ -127,9 +127,9 @@ export const useValidatorDetails = () => {
     // ============================
     const formatStatus = () => {
       const profile = {
-        inActiveSet: R.pathOr(false, ['validatorStatuses', 0, 'inActiveSet'], data.validator[0]),
-        jailed: R.pathOr(false, ['validatorStatuses', 0, 'jailed'], data.validator[0]),
-        tombstoned: R.pathOr(false, ['validatorSigningInfos', 0, 'tombstoned'], data.validator[0]),
+        inActiveSet: R.pathOr('false', ['validatorStatuses', 'in_active_set'], data.validator[0]),
+        jailed: R.pathOr('false', ['validatorStatuses', 0, 'jailed'], data.validator[0]),
+        tombstoned: R.pathOr('false', ['validatorSigningInfos', 0, 'tombstoned'], data.validator[0]),
         commission: R.pathOr(0, ['validatorCommissions', 0, 'commission'], data.validator[0]),
         maxRate: R.pathOr('0', ['validator', 0, 'validatorInfo', 'maxRate'], data),
       };

@@ -14,19 +14,19 @@ import { VotingPowerType } from '../../types';
 const VotingPower: React.FC<{
   className?: string;
   data: VotingPowerType;
-  inActiveSet: boolean;
+  inActiveSet: string;
 }> = ({
   className,
   data,
   inActiveSet,
 }) => {
   const { t } = useTranslation('validators');
-  const votingPowerPercent = inActiveSet ? numeral((
+  const votingPowerPercent = inActiveSet === 'true' ? numeral((
     data.self / numeral(data.overall.value).value()) * 100) : numeral(0);
 
   const classes = useStyles(votingPowerPercent.format(0, Math.floor));
 
-  const votingPower = inActiveSet ? numeral(data.self).format('0,0') : '0';
+  const votingPower = inActiveSet === 'true' ? numeral(data.self).format('0,0') : '0';
 
   return (
     <Box className={classnames(className, classes.root)}>

@@ -53,9 +53,8 @@ type ProfileConnectionType = {
 }
 
 type ValidatorProfile = {
-  inActiveSet: boolean;
-  jailed: boolean;
-  condition: number;
+  inActiveSet: string;
+  jailed: string;
   commission: number;
   signedBlockWindow: number;
   missedBlockCounter: number;

@@ -4,26 +4,26 @@
  * @param jailed boolean
  * @returns an object with status and theme
  */
-export const getValidatorStatus = (inActiveSet, jailed, tombstoned: boolean) => {
+export const getValidatorStatus = (inActiveSet, jailed, tombstoned: string) => {
   const results = {
     status: 'na',
     theme: 'zero',
   };
 
   // jailed and tombstone statuses are prioritised over their unbonding state
-  if (tombstoned) {
+  if (tombstoned === 'true') {
     results.status = 'Tombstoned';
     results.theme = 'two';
     return results;
   }
 
-  if (jailed) {
+  if (jailed === 'true') {
     results.status = 'Jailed';
     results.theme = 'two';
     return results;
   }
 
-  if (inActiveSet === true) {
+  if (inActiveSet === 'true') {
     results.status = 'Active';
     results.theme = 'one';
   } else {

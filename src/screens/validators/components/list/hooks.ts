@@ -6,9 +6,7 @@ import {
   useValidatorsQuery,
   ValidatorsQuery,
 } from '@graphql/types/general_types';
-import { getValidatorCondition } from '@utils/get_validator_condition';
 import { formatToken } from '@utils/format_token';
-import { SlashingParams } from '@models';
 import { chainConfig } from '@src/configs';
 import {
   ValidatorsState,
@@ -48,33 +46,26 @@ export const useValidators = () => {
   // Parse data
   // ==========================
   const formatValidators = (data: ValidatorsQuery) => {
-    const slashingParams = SlashingParams.fromJson(R.pathOr({}, ['slashingParams', 0, 'params'], data));
     const votingPowerOverall = numeral(formatToken(
       R.pathOr(0, ['stakingPool', 0, 'bondedTokens'], data),
       chainConfig.votingPowerTokenUnit,
     ).value).value();
 
-    const { signedBlockWindow } = slashingParams;
-
     let formattedItems: ValidatorType[] = data.validator.map((x) => {
-      const inActiveSetString = R.pathOr('false', ['validatorStatuses', 'inActiveSet'], x);
+      const inActiveSetString = R.pathOr('false', ['validatorStatuses', 'in_active_set'], x);
       const jailedString = R.pathOr('false', ['validatorStatuses', 'jailed'], x);
       const tombstonedString = R.pathOr('false', ['validatorStatuses', 'tombstoned'], x);
-
       const votingPower = R.pathOr(0, ['validatorVotingPowers', 0, 'votingPower'], x);
       const votingPowerPercent = numeral((votingPower / votingPowerOverall) * 100).value();
-      const missedBlockCounter = R.pathOr(0, ['validatorSigningInfos', 0, 'missedBlocksCounter'], x);
-      const condition = getValidatorCondition(signedBlockWindow, missedBlockCounter);
 
       return ({
         validator: x.selfDelegateAddress,
         votingPower,
         votingPowerPercent,
         commission: R.pathOr(0, ['validatorCommissions', 0, 'commission'], x) * 100,
-        condition,
-        inActiveSet: inActiveSetString === true,
-        jailed: jailedString === 'true',
-        tombstoned: tombstonedString === 'true',
+        inActiveSet: inActiveSetString,
+        jailed: jailedString,
+        tombstoned: tombstonedString,
       });
     });
 
@@ -134,11 +125,11 @@ export const useValidators = () => {
     let sorted: ItemType[] = R.clone(items);
 
     if (state.tab === 0) {
-      sorted = sorted.filter((x) => x.inActiveSet === true);
+      sorted = sorted.filter((x) => x.inActiveSet === 'true');
     }
 
     if (state.tab === 1) {
-      sorted = sorted.filter((x) => x.inActiveSet !== true);
+      sorted = sorted.filter((x) => x.inActiveSet !== 'true');
     }
 
     if (search) {
