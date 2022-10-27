@@ -15,7 +15,6 @@ import useTranslation from 'next-translate/useTranslation';
 import { mergeRefs } from '@utils/merge_refs';
 import { Loading } from '@components';
 import { useGrid } from '@hooks';
-import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
 import { TransactionsListState } from '../../types';
 import { columns } from './utils';
 import { useStyles } from './styles';

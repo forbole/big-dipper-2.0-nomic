@@ -10,7 +10,6 @@ import {
 import {
   Typography,
 } from '@material-ui/core';
-import useTranslation from 'next-translate/useTranslation';
 import { VariableSizeList as List } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
 import AutoSizer from 'react-virtualized-auto-sizer';
@@ -40,7 +39,6 @@ const TransactionList: React.FC<TransactionsListDetailsState> = ({
   const {
     isMobile,
   } = useScreenSize();
-  const { t } = useTranslation('transactions');
   const classes = useStyles();
   const dateFormat = useRecoilValue(readDate);
 
