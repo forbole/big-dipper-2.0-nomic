@@ -22,7 +22,7 @@ exports[`screen: Home/Transactions/Desktop matches snapshot 1`] = `
           scope="col"
           style={
             Object {
-              "width": "30%",
+              "width": "15%",
             }
           }
         >
@@ -67,7 +67,7 @@ exports[`screen: Home/Transactions/Desktop matches snapshot 1`] = `
           className="MuiTableCell-root MuiTableCell-body"
           style={
             Object {
-              "width": "30%",
+              "width": "15%",
             }
           }
         >
@@ -95,7 +95,7 @@ exports[`screen: Home/Transactions/Desktop matches snapshot 1`] = `
             onClick={[Function]}
             onMouseEnter={[Function]}
           >
-            76nwV8zz8tLz97S...hQ857
+            76nwV8zz8tLz97S...JDLQfF66jZhQ857
           </a>
         </td>
         <td
