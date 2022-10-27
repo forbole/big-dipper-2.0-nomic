@@ -39,17 +39,8 @@ const Desktop: React.FC<{
       ),
       txs: numeral(x.txs).format('0,0'),
       time: dayjs.utc(x.timestamp).fromNow(),
-      proposer: (
-        <AvatarName
-          address={x.proposer.address}
-          imageUrl={x.proposer.imageUrl}
-          name={getMiddleEllipsis(x.proposer.name, {
-            beginning: 16, ending: 13,
-          })}
-        />
-      ),
       hash: getMiddleEllipsis(x.hash, {
-        beginning: 6, ending: 5,
+        beginning: 15, ending: 15,
       }),
     });
   });
