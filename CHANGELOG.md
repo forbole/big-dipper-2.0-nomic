@@ -2,6 +2,8 @@
 
 ## Fixes
 - Add missing dependency of `useEffect` in `useProfilesRecoil` to avoid desmos profile from not being loaded ([\#904](https://github.com/forbole/big-dipper-2.0-cosmos/issues/904))
+- Fixed validators page ([\#14](https://github.com/forbole/big-dipper-2.0-nomic/pull/14))
+- Fixed blocks, validators and txs display ([\#15](https://github.com/forbole/big-dipper-2.0-nomic/pull/15))
 
 ## Changes
 - Update validator and account details to not be found if bech32 is invalid
