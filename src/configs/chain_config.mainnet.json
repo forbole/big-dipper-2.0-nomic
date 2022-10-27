@@ -20,6 +20,10 @@
     "unom": {
       "display": "nom",
       "exponent": 6
+    },
+    "nsat": {
+      "display": "sat",
+      "exponent": 8
     }
   },
   "extra": {
