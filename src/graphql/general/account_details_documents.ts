@@ -5,3 +5,11 @@ query AccountBalances($address: String!) {
   }
 }
 `;
+
+export const AccountWithdrawalAddressDocument = /* GraphQL */`
+query AccountWithdrawalAddress($address: String!) {
+  withdrawalAddress: action_delegator_withdraw_address(address: $address) {
+    address
+  }
+}
+`;

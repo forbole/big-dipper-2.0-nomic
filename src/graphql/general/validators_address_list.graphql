@@ -5,6 +5,7 @@ query ValidatorsAddressList {
     validatorDescriptions: validator_descriptions(limit: 1, order_by: {height: desc}) {
       moniker
       identity
+      avatarUrl: avatar_url
     }
   }
 }
@@ -15,6 +16,7 @@ query ValidatorAddresses {
     selfDelegateAddress: self_delegate_address
     validatorDescriptions: validator_descriptions(limit: 1, order_by: {height: desc}) {
       moniker
+      avatarUrl: avatar_url
     }
   }
 }

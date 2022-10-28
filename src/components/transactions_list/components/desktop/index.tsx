@@ -15,7 +15,6 @@ import useTranslation from 'next-translate/useTranslation';
 import { mergeRefs } from '@utils/merge_refs';
 import { Loading } from '@components';
 import { useGrid } from '@hooks';
-import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
 import { TransactionsListState } from '../../types';
 import { columns } from './utils';
 import { useStyles } from './styles';
@@ -49,9 +48,7 @@ const Desktop: React.FC<TransactionsListState> = ({
     hash: (
       <Link href={TRANSACTION_DETAILS(x.hash)} passHref>
         <Typography variant="body1" component="a">
-          {getMiddleEllipsis(x.hash, {
-            beginning: 20, ending: 15,
-          })}
+          {x.hash}
         </Typography>
       </Link>
     ),

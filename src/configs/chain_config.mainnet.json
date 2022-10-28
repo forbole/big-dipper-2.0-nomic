@@ -1,9 +1,9 @@
 {
   "title": "Nomic Block Explorer",
   "network": "nomic-stakenet-2",
-  "icon": "/images/icon.svg",
+  "icon": "/nomic/images/icon.svg",
   "logo": {
-    "default": "/images/logo.svg"
+    "default": "/nomic/images/logo.svg"
   },
   "prefix": {
     "consensus": "nomicvalcons",
@@ -20,6 +20,10 @@
     "unom": {
       "display": "nom",
       "exponent": 6
+    },
+    "nsat": {
+      "display": "sat",
+      "exponent": 8
     }
   },
   "extra": {

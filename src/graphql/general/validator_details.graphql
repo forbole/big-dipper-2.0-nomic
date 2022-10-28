@@ -28,7 +28,7 @@ query ValidatorDetails($address: String) {
       details
     }
     validatorStatuses: validator_status {
-      status: in_active_set
+      in_active_set
       jailed
       height
     }

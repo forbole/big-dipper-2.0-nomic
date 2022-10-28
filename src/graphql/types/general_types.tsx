@@ -4755,6 +4755,7 @@ export type Validator_Commission_Variance_Order_By = {
 /** columns and relationships of "validator_description" */
 export type Validator_Description = {
   __typename?: 'validator_description';
+  avatar_url?: Maybe<Scalars['String']>;
   details?: Maybe<Scalars['String']>;
   height: Scalars['bigint'];
   identity?: Maybe<Scalars['String']>;
@@ -4826,6 +4827,7 @@ export type Validator_Description_Bool_Exp = {
   _and?: Maybe<Array<Validator_Description_Bool_Exp>>;
   _not?: Maybe<Validator_Description_Bool_Exp>;
   _or?: Maybe<Array<Validator_Description_Bool_Exp>>;
+  avatar_url?: Maybe<String_Comparison_Exp>;
   details?: Maybe<String_Comparison_Exp>;
   height?: Maybe<Bigint_Comparison_Exp>;
   identity?: Maybe<String_Comparison_Exp>;
@@ -4838,6 +4840,7 @@ export type Validator_Description_Bool_Exp = {
 /** aggregate max on columns */
 export type Validator_Description_Max_Fields = {
   __typename?: 'validator_description_max_fields';
+  avatar_url?: Maybe<Scalars['String']>;
   details?: Maybe<Scalars['String']>;
   height?: Maybe<Scalars['bigint']>;
   identity?: Maybe<Scalars['String']>;
@@ -4848,6 +4851,7 @@ export type Validator_Description_Max_Fields = {
 
 /** order by max() on columns of table "validator_description" */
 export type Validator_Description_Max_Order_By = {
+  avatar_url?: Maybe<Order_By>;
   details?: Maybe<Order_By>;
   height?: Maybe<Order_By>;
   identity?: Maybe<Order_By>;
@@ -4859,6 +4863,7 @@ export type Validator_Description_Max_Order_By = {
 /** aggregate min on columns */
 export type Validator_Description_Min_Fields = {
   __typename?: 'validator_description_min_fields';
+  avatar_url?: Maybe<Scalars['String']>;
   details?: Maybe<Scalars['String']>;
   height?: Maybe<Scalars['bigint']>;
   identity?: Maybe<Scalars['String']>;
@@ -4869,6 +4874,7 @@ export type Validator_Description_Min_Fields = {
 
 /** order by min() on columns of table "validator_description" */
 export type Validator_Description_Min_Order_By = {
+  avatar_url?: Maybe<Order_By>;
   details?: Maybe<Order_By>;
   height?: Maybe<Order_By>;
   identity?: Maybe<Order_By>;
@@ -4879,6 +4885,7 @@ export type Validator_Description_Min_Order_By = {
 
 /** Ordering options when selecting data from "validator_description". */
 export type Validator_Description_Order_By = {
+  avatar_url?: Maybe<Order_By>;
   details?: Maybe<Order_By>;
   height?: Maybe<Order_By>;
   identity?: Maybe<Order_By>;
@@ -4890,6 +4897,8 @@ export type Validator_Description_Order_By = {
 
 /** select columns of table "validator_description" */
 export enum Validator_Description_Select_Column {
+  /** column name */
+  AvatarUrl = 'avatar_url',
   /** column name */
   Details = 'details',
   /** column name */
@@ -5711,7 +5720,7 @@ export type ValidatorDetailsQuery = { stakingPool: Array<(
     )>, validatorStatuses?: Maybe<(
       { __typename?: 'validator_status' }
       & Pick<Validator_Status, 'jailed' | 'height'>
-      & { status: Validator_Status['in_active_set'] }
+      & { inActiveSet: Validator_Status['in_active_set'] }
     )>, validatorCommissions: Array<(
       { __typename?: 'validator_commission' }
       & Pick<Validator_Commission, 'commission'>
@@ -5725,16 +5734,18 @@ export type ValidatorDetailsQuery = { stakingPool: Array<(
 export type ValidatorsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ValidatorsQuery = { stakingPool: Array<(
+export type ValidatorsQuery = {
+  stakingPool: Array<(
     { __typename?: 'staking_pool' }
     & { bondedTokens: Staking_Pool['bonded_tokens'] }
   )>, validator: Array<(
     { __typename?: 'validator' }
     & { consensusAddress: Validator['consensus_address'], selfDelegateAddress: Validator['self_delegate_address'] }
-    & { validatorStatuses?: Maybe<(
-      { __typename?: 'validator_status' }
-      & Pick<Validator_Status, 'jailed' | 'tombstoned' | 'height'>
-      & { status: Validator_Status['in_active_set'] }
+    & {
+      validatorStatuses?: Maybe<(
+        { __typename?: 'validator_status' }
+        & Pick<Validator_Status, 'jailed' | 'tombstoned' | 'in_active_set' | 'height'>
+      & { inActiveSet: Validator_Status['in_active_set'] }
     )>, validatorVotingPowers: Array<(
       { __typename?: 'validator_voting_power' }
       & { votingPower: Validator_Voting_Power['voting_power'] }
@@ -5753,6 +5764,7 @@ export type ValidatorsAddressListQuery = { validator: Array<(
     & { validatorDescriptions: Array<(
       { __typename?: 'validator_description' }
       & Pick<Validator_Description, 'moniker' | 'identity'>
+      & { avatarUrl: Validator_Description['avatar_url'] }
     )> }
   )> };
 
@@ -5765,6 +5777,7 @@ export type ValidatorAddressesQuery = { validator: Array<(
     & { validatorDescriptions: Array<(
       { __typename?: 'validator_description' }
       & Pick<Validator_Description, 'moniker'>
+      & { avatarUrl: Validator_Description['avatar_url'] }
     )> }
   )> };
 
@@ -6488,7 +6501,7 @@ export const ValidatorDetailsDocument = gql`
       details
     }
     validatorStatuses: validator_status {
-      status: in_active_set
+      in_active_set
       jailed
       height
     }
@@ -6543,7 +6556,7 @@ export const ValidatorsDocument = gql`
     consensusAddress: consensus_address
     selfDelegateAddress: self_delegate_address
     validatorStatuses: validator_status {
-      status: in_active_set
+      in_active_set
       jailed
       tombstoned
       height
@@ -6599,6 +6612,7 @@ export const ValidatorsAddressListDocument = gql`
     ) {
       moniker
       identity
+      avatarUrl: avatar_url
     }
   }
 }
@@ -6642,6 +6656,7 @@ export const ValidatorAddressesDocument = gql`
       order_by: {height: desc}
     ) {
       moniker
+      avatarUrl: avatar_url
     }
   }
 }
