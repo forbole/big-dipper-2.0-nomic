@@ -29,14 +29,6 @@ const Blocks = () => {
     isItemLoaded,
   } = useBlocks();
 
-  const proposerProfiles = useProfilesRecoil(state.items.map((x) => x.proposer));
-  const mergedDataWithProfiles = state.items.map((x, i) => {
-    return ({
-      ...x,
-      proposer: proposerProfiles[i],
-    });
-  });
-
   return (
     <>
       <NextSeo
@@ -60,14 +52,14 @@ const Blocks = () => {
               <>
                 {isDesktop ? (
                   <Desktop
-                    items={mergedDataWithProfiles}
+                    items={state.items}
                     itemCount={itemCount}
                     loadMoreItems={loadMoreItems}
                     isItemLoaded={isItemLoaded}
                   />
                 ) : (
                   <Mobile
-                    items={mergedDataWithProfiles}
+                    items={state.items}
                     itemCount={itemCount}
                     loadMoreItems={loadMoreItems}
                     isItemLoaded={isItemLoaded}
