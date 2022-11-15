@@ -9,9 +9,6 @@ import {
   NoData,
 } from '@components';
 import { useScreenSize } from '@hooks';
-import {
-  useProfilesRecoil,
-} from '@recoil/profiles';
 import { useStyles } from './styles';
 import { useBlocks } from './hooks';
 
