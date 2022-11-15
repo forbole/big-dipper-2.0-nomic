@@ -13,3 +13,11 @@ query AccountWithdrawalAddress($address: String!) {
   }
 }
 `;
+
+export const AccountDelegationBalanceDocument = /* GraphQL */ `
+  query AccountDelegationBalance($address: String!) {
+    delegationBalance: action_delegation_total(address: $address) {
+      coins
+    }
+  }
+`;

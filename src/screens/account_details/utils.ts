@@ -3,6 +3,7 @@ import * as R from 'ramda';
 import {
   AccountBalancesDocument,
   AccountWithdrawalAddressDocument,
+  AccountDelegationBalanceDocument,
 } from '@src/graphql/general/account_details_documents';
 
 export const fetchAvailableBalances = async (address: string) => {
@@ -36,6 +37,25 @@ export const fetchAccountWithdrawalAddress = async (address: string) => {
         address,
       },
       query: AccountWithdrawalAddressDocument,
+    });
+    return R.pathOr(defaultReturnValue, ['data'], data);
+  } catch (error) {
+    return defaultReturnValue;
+  }
+};
+
+export const fetchDelegationBalance = async (address: string) => {
+  const defaultReturnValue = {
+    delegationBalance: {
+      coins: [],
+    },
+  };
+  try {
+    const { data } = await axios.post(process.env.NEXT_PUBLIC_GRAPHQL_URL, {
+      variables: {
+        address,
+      },
+      query: AccountDelegationBalanceDocument,
     });
     return R.pathOr(defaultReturnValue, ['data'], data);
   } catch (error) {

@@ -5817,6 +5817,66 @@ export function useAccountBalancesLazyQuery(baseOptions?: Apollo.LazyQueryHookOp
 export type AccountBalancesQueryHookResult = ReturnType<typeof useAccountBalancesQuery>;
 export type AccountBalancesLazyQueryHookResult = ReturnType<typeof useAccountBalancesLazyQuery>;
 export type AccountBalancesQueryResult = Apollo.QueryResult<AccountBalancesQuery, AccountBalancesQueryVariables>;
+
+export const AccountDelegationBalanceDocument = gql`
+  query AccountDelegationBalance($address: String!) {
+    delegationBalance: action_delegation_total(address: $address) {
+      coins
+    }
+  }
+`;
+
+/**
+ * __useAccountDelegationBalanceQuery__
+ *
+ * To run a query within a React component, call `useAccountDelegationBalanceQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAccountDelegationBalanceQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAccountDelegationBalanceQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useAccountDelegationBalanceQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    AccountDelegationBalanceQuery,
+    AccountDelegationBalanceQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<AccountDelegationBalanceQuery, AccountDelegationBalanceQueryVariables>(
+    AccountDelegationBalanceDocument,
+    options
+  );
+}
+export function useAccountDelegationBalanceLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    AccountDelegationBalanceQuery,
+    AccountDelegationBalanceQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<AccountDelegationBalanceQuery, AccountDelegationBalanceQueryVariables>(
+    AccountDelegationBalanceDocument,
+    options
+  );
+}
+export type AccountDelegationBalanceQueryHookResult = ReturnType<
+  typeof useAccountDelegationBalanceQuery
+>;
+export type AccountDelegationBalanceLazyQueryHookResult = ReturnType<
+  typeof useAccountDelegationBalanceLazyQuery
+>;
+export type AccountDelegationBalanceQueryResult = Apollo.QueryResult<
+  AccountDelegationBalanceQuery,
+  AccountDelegationBalanceQueryVariables
+  >;
+
 export const ActiveValidatorCountDocument = gql`
     query ActiveValidatorCount {
   activeTotal: validator_status_aggregate(where: {in_active_set: {_eq: "true"}}) {
@@ -5831,6 +5891,15 @@ export const ActiveValidatorCountDocument = gql`
   }
 }
     `;
+   
+export type AccountDelegationBalanceQuery = {
+  delegationBalance?: { __typename?: 'ActionBalance'; coins?: Array<any | null> | null } | null;
+};
+
+export type AccountDelegationBalanceQueryVariables = Exact<{
+  address: Scalars['String'];
+}>;
+
 
 /**
  * __useActiveValidatorCountQuery__
@@ -6688,3 +6757,5 @@ export function useValidatorAddressesLazyQuery(baseOptions?: Apollo.LazyQueryHoo
 export type ValidatorAddressesQueryHookResult = ReturnType<typeof useValidatorAddressesQuery>;
 export type ValidatorAddressesLazyQueryHookResult = ReturnType<typeof useValidatorAddressesLazyQuery>;
 export type ValidatorAddressesQueryResult = Apollo.QueryResult<ValidatorAddressesQuery, ValidatorAddressesQueryVariables>;
+
+
