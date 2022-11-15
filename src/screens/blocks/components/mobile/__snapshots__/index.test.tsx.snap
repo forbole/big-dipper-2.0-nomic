@@ -58,12 +58,6 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
               </Link>
             }
             id="SingleBlockMobile"
-            proposer={
-              <AvatarName
-                address="address"
-                name="proposer"
-              />
-            }
             time="1 day ago"
             txs="2"
           />
@@ -102,12 +96,6 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
               </Link>
             }
             id="SingleBlockMobile"
-            proposer={
-              <AvatarName
-                address="address"
-                name="proposer"
-              />
-            }
             time="1 day ago"
             txs="2"
           />

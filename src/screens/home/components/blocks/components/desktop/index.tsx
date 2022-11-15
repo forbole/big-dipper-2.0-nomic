@@ -16,11 +16,11 @@ import { BLOCK_DETAILS } from '@utils/go_to_page';
 import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
 import { useStyles } from './styles';
 import { columns } from './utils';
-import { ItemType } from '../../types';
+import { BlockType } from '../../types';
 
 const Desktop: React.FC<{
   className?: string;
-  items: ItemType[];
+  items: BlockType[];
 }> = ({
   className, items,
 }) => {
