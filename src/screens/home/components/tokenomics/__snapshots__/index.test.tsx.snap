@@ -35,7 +35,7 @@ exports[`screen: Home/Tokenomics matches snapshot 1`] = `
       <h4
         className="MuiTypography-root MuiTypography-h4"
       >
-        7,528,260
+        204,887
          
         DARIC
       </h4>
@@ -96,7 +96,7 @@ exports[`screen: Home/Tokenomics matches snapshot 1`] = `
               d="M 10,94.99999999999999
     A 90,90,0,
     0,1,
-    10.450761328426793,86.00367556489773
+    115.21586559461512,6.295561361301608
   L 100,95 Z"
               fill="#1EC490"
               name={0}
@@ -112,32 +112,13 @@ exports[`screen: Home/Tokenomics matches snapshot 1`] = `
               className="recharts-sector"
               cx={100}
               cy={95}
-              d="M 10.450761328426793,86.00367556489773
+              d="M 115.21586559461512,6.295561361301608
     A 90,90,0,
     0,1,
-    189.70794705606173,87.75539959785036
-  L 100,95 Z"
-              fill="#497BFF"
-              name={1}
-              stroke="none"
-            />
-          </g>
-          <g
-            className="recharts-layer recharts-pie-sector"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-          >
-            <path
-              className="recharts-sector"
-              cx={100}
-              cy={95}
-              d="M 189.70794705606173,87.75539959785036
-    A 90,90,0,
-    0,1,
-    190,95.00000000000003
+    190,95
   L 100,95 Z"
               fill="#9F46EC"
-              name={2}
+              name={1}
               stroke="none"
             />
           </g>
@@ -230,15 +211,6 @@ exports[`screen: Home/Tokenomics matches snapshot 1`] = `
           className="MuiTypography-root MuiTypography-caption"
         >
           unbonded
-        </span>
-      </div>
-      <div
-        className="legends__item"
-      >
-        <span
-          className="MuiTypography-root MuiTypography-caption"
-        >
-          unbonding
         </span>
       </div>
     </div>
