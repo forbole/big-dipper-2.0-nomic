@@ -19,10 +19,10 @@ const initialState: {
 };
 
 export const useOnlineVotingPower = () => {
-  const [onlineVPState, setOnlineVPState] = useState(initialState);
+  const [state, setState] = useState(initialState);
 
   const handleSetState = (stateChange: any) => {
-    setOnlineVPState((prevState) => R.mergeDeepLeft(stateChange, prevState));
+    setState((prevState) => R.mergeDeepLeft(stateChange, prevState));
   };
 
   useOnlineVotingPowerQuery({
@@ -59,6 +59,6 @@ export const useOnlineVotingPower = () => {
   };
 
   return {
-    onlineVPState,
+    state,
   };
 };

@@ -7,10 +7,10 @@ import { useOnlineVotingPower } from './hooks';
 
 const OnlineVotingPower: React.FC<ComponentDefault> = () => {
   const { t } = useTranslation('home');
-  const { onlineVPState } = useOnlineVotingPower();
+  const { state } = useOnlineVotingPower();
 
-  const votingPowerPercent = onlineVPState.totalVotingPower === 0
-    ? numeral(0) : numeral((onlineVPState.votingPower / onlineVPState.totalVotingPower) * 100);
+  const votingPowerPercent = state.totalVotingPower === 0
+    ? numeral(0) : numeral((state.votingPower / state.totalVotingPower) * 100);
 
   const classes = useStyles(votingPowerPercent.format(0));
 
@@ -24,11 +24,11 @@ const OnlineVotingPower: React.FC<ComponentDefault> = () => {
           {`${votingPowerPercent.format('0,0.00', (n) => ~~n)}%`}
         </Typography>
         <Typography variant="body1">
-          {numeral(onlineVPState.votingPower).format('0,0')}
+          {numeral(state.votingPower).format('0,0')}
           {' '}
           /
           {' '}
-          {numeral(onlineVPState.totalVotingPower).format('0,0')}
+          {numeral(state.totalVotingPower).format('0,0')}
         </Typography>
       </div>
       <div className={classes.chart}>
@@ -40,7 +40,7 @@ const OnlineVotingPower: React.FC<ComponentDefault> = () => {
             {t('validators')}
           </Typography>
           <Typography variant="body1" className="value">
-            {numeral(onlineVPState.activeValidators).format('0,0')}
+            {numeral(state.activeValidators).format('0,0')}
           </Typography>
         </div>
         <div className={classes.item}>
@@ -56,7 +56,7 @@ const OnlineVotingPower: React.FC<ComponentDefault> = () => {
             {t('votingPower')}
           </Typography>
           <Typography variant="body1" className="value">
-            {numeral(onlineVPState.votingPower).format('0,0')}
+            {numeral(state.votingPower).format('0,0')}
           </Typography>
         </div>
         <div className={classes.item}>
@@ -64,12 +64,11 @@ const OnlineVotingPower: React.FC<ComponentDefault> = () => {
             {t('totalVotingPower')}
           </Typography>
           <Typography variant="body1" className="value">
-            {numeral(onlineVPState.totalVotingPower).format('0,0')}
+            {numeral(state.totalVotingPower).format('0,0')}
           </Typography>
         </div>
       </div>
     </div>
   );
 };
-
 export default OnlineVotingPower;

@@ -6,7 +6,8 @@ import {
   useValidatorsQuery,
   ValidatorsQuery,
 } from '@graphql/types/general_types';
-import { useOnlineVotingPower } from '../../../home/components/hero/components/online_voting_power/hooks';
+import { formatToken } from '@utils/format_token';
+import { chainConfig } from '@src/configs';
 import {
   ValidatorsState,
   ItemType,
@@ -24,7 +25,6 @@ export const useValidators = () => {
     sortKey: 'validator.name',
     sortDirection: 'asc',
   });
-  const { onlineVPState } = useOnlineVotingPower();
 
   const handleSetState = (stateChange: any) => {
     setState((prevState) => R.mergeDeepLeft(stateChange, prevState));
@@ -46,7 +46,10 @@ export const useValidators = () => {
   // Parse data
   // ==========================
   const formatValidators = (data: ValidatorsQuery) => {
-    const votingPowerOverall = onlineVPState.votingPower;
+    const votingPowerOverall = numeral(formatToken(
+      R.pathOr(0, ['stakingPool', 0, 'bondedTokens'], data),
+      chainConfig.votingPowerTokenUnit,
+    ).value).value();
 
     let formattedItems: ValidatorType[] = data.validator.map((x) => {
       const inActiveSetString = R.pathOr('false', ['validatorStatuses', 'in_active_set'], x);
@@ -75,7 +78,7 @@ export const useValidators = () => {
     let cumulativeVotingPower = Big(0);
     let reached = false;
     formattedItems.forEach((x) => {
-      if (x.inActiveSet) {
+      if (x.inActiveSet === 'true') {
         const totalVp = cumulativeVotingPower.add(x.votingPowerPercent);
         if (totalVp.lte(34) && !reached) {
           x.topVotingPower = true;
