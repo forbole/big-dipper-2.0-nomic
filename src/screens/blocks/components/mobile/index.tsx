@@ -5,7 +5,6 @@ import dayjs from '@utils/dayjs';
 import Link from 'next/link';
 import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
 import {
-  AvatarName,
   SingleBlockMobile,
   Loading,
 } from '@components';
@@ -22,11 +21,11 @@ import {
   useListRow,
 } from '@hooks';
 import { useStyles } from './styles';
-import { ItemType } from '../../types';
+import { BlockType } from '../../types';
 
 const Mobile: React.FC<{
   className?: string;
-  items: ItemType[];
+  items: BlockType[];
   itemCount: number;
   loadMoreItems: (any) => void;
   isItemLoaded?: (index: number) => boolean;
@@ -56,17 +55,8 @@ const Mobile: React.FC<{
       ),
       txs: numeral(x.txs).format('0,0'),
       time: dayjs.utc(x.timestamp).fromNow(),
-      proposer: (
-        <AvatarName
-          address={x.proposer.address}
-          imageUrl={x.proposer.imageUrl}
-          name={getMiddleEllipsis(x.proposer.name, {
-            beginning: 16, ending: 10,
-          })}
-        />
-      ),
       hash: getMiddleEllipsis(x.hash, {
-        beginning: 13, ending: 10,
+        beginning: 16, ending: 12,
       }),
     });
   });

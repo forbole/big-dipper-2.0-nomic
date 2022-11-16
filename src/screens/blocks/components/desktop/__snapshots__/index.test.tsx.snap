@@ -55,26 +55,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 150,
-          }
-        }
-      >
-        <h4
-          className="MuiTypography-root MuiTypography-h4"
-        >
-          proposer
-        </h4>
-      </div>
-      <div
-        className="makeStyles-cell"
-        style={
-          Object {
-            "height": 50,
-            "left": 240,
-            "position": "absolute",
-            "right": undefined,
-            "top": 0,
-            "width": 150,
+            "width": 330,
           }
         }
       >
@@ -89,11 +70,11 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 390,
+            "left": 420,
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 90,
+            "width": 60,
           }
         }
       >
@@ -183,30 +164,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 150,
-          }
-        }
-      >
-        <div
-          className="MuiTypography-root MuiTypography-body1"
-        >
-          <div
-            address="address"
-            id="AvatarName"
-            name="proposer"
-          />
-        </div>
-      </div>
-      <div
-        className="makeStyles-cell makeStyles-body odd"
-        style={
-          Object {
-            "height": 50,
-            "left": 240,
-            "position": "absolute",
-            "right": undefined,
-            "top": 0,
-            "width": 150,
+            "width": 330,
           }
         }
       >
@@ -221,11 +179,11 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 390,
+            "left": 420,
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 90,
+            "width": 60,
           }
         }
       >
@@ -289,30 +247,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
             "position": "absolute",
             "right": undefined,
             "top": 50,
-            "width": 150,
-          }
-        }
-      >
-        <div
-          className="MuiTypography-root MuiTypography-body1"
-        >
-          <div
-            address="address"
-            id="AvatarName"
-            name="proposer"
-          />
-        </div>
-      </div>
-      <div
-        className="makeStyles-cell makeStyles-body"
-        style={
-          Object {
-            "height": 50,
-            "left": 240,
-            "position": "absolute",
-            "right": undefined,
-            "top": 50,
-            "width": 150,
+            "width": 330,
           }
         }
       >
@@ -327,11 +262,11 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 390,
+            "left": 420,
             "position": "absolute",
             "right": undefined,
             "top": 50,
-            "width": 90,
+            "width": 60,
           }
         }
       >

@@ -8,17 +8,13 @@ export const columns:{
     width: 15,
   },
   {
-    key: 'proposer',
-    width: 25,
-  },
-  {
     key: 'hash',
-    width: 25,
+    width: 55,
   },
   {
     key: 'txs',
     align: 'right',
-    width: 15,
+    width: 10,
   },
   {
     key: 'time',

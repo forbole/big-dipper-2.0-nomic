@@ -2,7 +2,7 @@ import {
   useState, useEffect,
 } from 'react';
 import * as R from 'ramda';
-// import Big from 'big.js';
+import Big from 'big.js';
 import { useRouter } from 'next/router';
 import { getDenom } from '@utils/get_denom';
 import {
@@ -14,6 +14,7 @@ import { useDesmosProfile } from '@hooks';
 import { AccountDetailState } from './types';
 import {
   fetchAvailableBalances,
+  fetchDelegationBalance,
   fetchAccountWithdrawalAddress,
 } from './utils';
 
@@ -38,6 +39,7 @@ const initialState: AccountDetailState = {
   },
   balance: {
     available: defaultTokenUnit,
+    delegate: defaultTokenUnit,
     total: defaultTokenUnit,
   },
 };
@@ -97,13 +99,15 @@ export const useAccountDetails = () => {
     const address = router.query.address as string;
     const promises = [
       fetchAvailableBalances(address),
+      fetchDelegationBalance(address),
     ];
     const [
-      available,
+      available, delegation,
     ] = await Promise.allSettled(promises);
 
     const formattedRawData: any = {};
     formattedRawData.accountBalances = R.pathOr([], ['value', 'accountBalances'], available);
+    formattedRawData.delegationBalance = R.pathOr([], ['value', 'delegationBalance'], delegation);
 
     handleSetState(formatAllBalance(formattedRawData));
   };
@@ -126,10 +130,21 @@ export const useAccountDetails = () => {
       );
       const availableAmount = formatToken(available.amount, chainConfig.primaryTokenUnit);
 
+      const delegate = getDenom(
+        R.pathOr([], ['delegationBalance', 'coins'], data),
+        chainConfig.primaryTokenUnit,
+      );
+      const delegateAmount = formatToken(delegate.amount, chainConfig.primaryTokenUnit);
+
+      const total = Big(availableAmount.value)
+        .plus(delegateAmount.value)
+        .toFixed(chainConfig.tokenUnits[chainConfig.primaryTokenUnit].exponent);
+
       const balance = {
         available: availableAmount,
+        delegate: delegateAmount,
         total: {
-          value: availableAmount.value,
+          value: total,
           displayDenom: availableAmount.displayDenom,
           baseDenom: availableAmount.baseDenom,
           exponent: availableAmount.exponent,

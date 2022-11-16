@@ -11,11 +11,11 @@ import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
 import {
   SingleBlockMobile,
 } from '@components';
-import { ItemType } from '../../types';
+import { BlockType } from '../../types';
 
 const Mobile: React.FC<{
   className?: string;
-  items: ItemType[];
+  items: BlockType[];
 }> = ({
   className, items,
 }) => {

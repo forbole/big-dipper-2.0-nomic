@@ -8,20 +8,19 @@ import AutoSizer from 'react-virtualized-auto-sizer';
 import InfiniteLoader from 'react-window-infinite-loader';
 import useTranslation from 'next-translate/useTranslation';
 import { Typography } from '@material-ui/core';
-import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
 import { VariableSizeGrid as Grid } from 'react-window';
 import {
-  Loading, AvatarName,
+  Loading,
 } from '@components';
 import { useGrid } from '@hooks';
 import { mergeRefs } from '@src/utils/merge_refs';
 import { useStyles } from './styles';
 import { columns } from './utils';
-import { ItemType } from '../../types';
+import { BlockType } from '../../types';
 
 const Desktop: React.FC<{
   className?: string;
-  items: ItemType[];
+  items: BlockType[];
   itemCount: number;
   loadMoreItems: (any) => void;
   isItemLoaded?: (index: number) => boolean;
@@ -53,18 +52,7 @@ const Desktop: React.FC<{
       ),
       txs: numeral(x.txs).format('0,0'),
       time: dayjs.utc(x.timestamp).fromNow(),
-      proposer: (
-        <AvatarName
-          address={x.proposer.address}
-          imageUrl={x.proposer.imageUrl}
-          name={getMiddleEllipsis(x.proposer.name, {
-            beginning: 16, ending: 13,
-          })}
-        />
-      ),
-      hash: getMiddleEllipsis(x.hash, {
-        beginning: 13, ending: 15,
-      }),
+      hash: x.hash,
     });
   });
 

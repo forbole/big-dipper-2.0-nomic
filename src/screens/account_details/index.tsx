@@ -53,6 +53,7 @@ const AccountDetails = () => {
             <Balance
               className={classes.balance}
               available={state.balance.available}
+              delegate={state.balance.delegate}
               total={state.balance.total}
             />
             <OtherTokens

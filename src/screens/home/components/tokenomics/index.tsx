@@ -24,7 +24,6 @@ const Tokenomics:React.FC<{
     classes, theme,
   } = useStyles();
   const { state } = useTokenomics();
-
   const data = [
     {
       legendKey: 'bonded',
@@ -40,13 +39,6 @@ const Tokenomics:React.FC<{
       value: numeral(state.unbonded).format('0,0'),
       rawValue: state.unbonded,
       percent: `${numeral((state.unbonded * 100) / state.total).format('0.00')}%`,
-      fill: theme.palette.custom.tokenomics.two,
-    },
-    {
-      legendKey: 'unbonding',
-      value: numeral(state.unbonding).format('0,0'),
-      rawValue: state.unbonding,
-      percent: `${numeral((state.unbonding * 100) / state.total).format('0.00')}%`,
       fill: theme.palette.custom.tokenomics.three,
     },
   ];
